@@ -1,0 +1,38 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.1'
+
+        //shadow dependencies
+        classpath "com.github.jengelman.gradle.plugins:shadow:4.0.2"
+    }
+}
+
+apply plugin: "com.github.johnrengelman.shadow"
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+        //Enjin repo
+        maven {
+            url 'https://oss.sonatype.org/content/groups/public/'
+        }
+
+        //shadow plugin repo
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
