@@ -35,12 +35,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        try {
-            Client client = createAndAuthClient(secret);
-            Log.d("Client Code: ", client.getAppId() + "");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Client client = createSdkClient();
+        new SDKAuthTask(client).execute(secret);
+        Log.d("Client Code: ", client.getAppId() + "");
     }
 
     @Override
